@@ -1,6 +1,11 @@
-# vue-cascading-signup 🏄 🌊
+# Vue.js Cascading Signup 🏄 🌊
 
-![example](https://raw.githubusercontent.com/98mprice/vue-cascading-signup/master/example.gif")
+A simple Vue.js component designed to build cascading forms
+
+Here's what it looks like
+![example](https://raw.githubusercontent.com/98mprice/vue-cascading-signup/master/example.gif)
+
+
 
 ## Project setup
 ```

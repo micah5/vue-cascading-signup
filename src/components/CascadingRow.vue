@@ -1,5 +1,5 @@
 <template>
-  <div class="row" v-show="checkShow" :style="{'font-size': fontSize + 'px', 'padding-bottom': '10px'}">
+  <div class="row" v-show="checkShow" :style="{'font-size': font_size + 'px', 'padding-bottom': '10px'}">
     <span class="white--text"><slot></slot></span>
     <span v-for="(part, index) in parts">
       <span v-if="part.type == String">
@@ -18,13 +18,13 @@
 <script>
 export default {
   props: {
-    modelKey: String,
+    model_key: String,
     dependant: {
       type: Boolean,
       default: false
     },
     model: Object,
-    fontSize: {
+    font_size: {
       type: Number,
       default: 35
     },
@@ -47,8 +47,12 @@ export default {
       return str
     },
     checkShow: function() {
-      if ((this.dependant) && (Object.keys(this.model)[Object.keys(this.model).indexOf(this.modelKey.toLowerCase()) - 1])) {
-        return this.model[Object.keys(this.model)[Object.keys(this.model).indexOf(this.modelKey.toLowerCase()) - 1]]
+      if (this.model_key) {
+        if ((this.dependant) && (Object.keys(this.model)[Object.keys(this.model).indexOf(this.model_key.toLowerCase()) - 1])) {
+          return this.model[Object.keys(this.model)[Object.keys(this.model).indexOf(this.model_key.toLowerCase()) - 1]]
+        } else {
+          return true
+        }
       } else {
         return true
       }
@@ -70,8 +74,8 @@ export default {
            accepted = false
         }
       }
-      if (accepted) {
-        this.model[this.modelKey.toLowerCase()] = this.finalInput
+      if (accepted && this.model_key) {
+        this.model[this.model_key.toLowerCase()] = this.finalInput
       }
     },
   },

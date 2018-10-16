@@ -1,16 +1,16 @@
 <template>
   <div id="app">
     <div id="main">
-      <CascadingRow :fontSize="25">
+      <CascadingRow :font_size="25">
         Hi there 👋 <br> This is the sign up demo. Try it out!
       </CascadingRow>
       <CascadingRow v-for="(part, key, index) in parts"
-        :modelKey="key" :dependant="true" :model="form"
+        :model_key="key" :dependant="true" :model="form"
         :parts="part">{{key}}:
       </CascadingRow>
       <CascadingRow v-show="formCorrect">
         <button>submit</button>
-        <button style="margin-left: 10px;">github</button>
+        <button style="margin-left: 10px;" href="https://github.com/98mprice/vue-cascading-signup">github</button>
       </CascadingRow>
       {{form}}
     </div>

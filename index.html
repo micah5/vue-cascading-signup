@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/vue-cascading-signup@0.1.3/dist/vue-cascading-signup.css">
+  <style>
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #ffffff;
+    background-color: red;
+    padding: 25px;
+    height: 100%;
+  }
+
+  body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+
+  #main {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  button {
+    color: #ffffff;
+    background-color: transparent;
+    border-radius: 4px 4px 4px 4px;
+    outline:0;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 35px;
+    font-family: 'Ubuntu', sans-serif;
+  }
+  </style>
+
+</head>
+<body>
+  <div id="app">
+    <div id="main">
+      <form action="https://github.com/98mprice/vue-cascading-signup">
+        <cascading-row :font_size="25">
+          Hi there 👋 <br> This is the sign up demo. Try it out!
+        </cascading-row>
+        <cascading-row v-for="(part, key, index) in parts"
+          :model_key="key" :dependant="true" :model="form"
+          :parts="part">{{key}}:
+        </cascading-row>
+        <cascading-row v-show="formCorrect">
+          <button>submit</button>
+          <button style="margin-left: 10px;" type="submit">github</button>
+        </cascading-row>
+        {{form}}
+      </form>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-cascading-signup@0.1.3/dist/vue-cascading-signup.umd.min.js"></script>
+  <script>
+  new Vue({
+    el:"#app",
+    data: {
+      previous: null,
+      form: {
+        'name': '',
+        'cell phone': '',
+        'email address': ''
+      },
+      parts: {
+        'Name': [
+          {
+            type: String
+          }
+        ],
+        'Cell Phone': [
+          {
+            text: '+27',
+            type: String
+          },
+          {
+            requires: 3,
+            maxLength: 3,
+            type: Number
+          },
+          {
+            requires: 4,
+            maxLength: 4,
+            type: Number
+          }
+        ],
+        'Email Address': [
+          {
+            requires: 5,
+            type: String,
+            width: 400
+          }
+        ]
+      }
+    },
+    computed: {
+      formCorrect: function() {
+        var accepted = true
+        for (var key in this.form) {
+          if (this.form.hasOwnProperty(key)) {
+            if (!this.form[key]) accepted = false
+          }
+        }
+        return accepted
+      }
+    }
+  })
+  </script>
+</body>
+</html>
