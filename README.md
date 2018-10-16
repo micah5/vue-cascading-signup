@@ -1,4 +1,6 @@
-# pretty-fullscreen-signup
+# vue-cascading-signup 🏄 🌊
+
+![example](https://github.com/98mprice/vue-cascading-signup/blob/master/example.gif")
 
 ## Project setup
 ```
