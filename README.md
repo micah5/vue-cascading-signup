@@ -1,6 +1,6 @@
 # vue-cascading-signup 🏄 🌊
 
-![example](https://github.com/98mprice/vue-cascading-signup/blob/master/example.gif")
+![example](https://raw.githubusercontent.com/98mprice/vue-cascading-signup/master/example.gif")
 
 ## Project setup
 ```
